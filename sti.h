@@ -1,0 +1,5 @@
+#ifdef STI_IMPLEMENTATION
+#define ARENA_IMPLEMENTATION
+#endif //STI_IMPLEMENTATION
+#include "arena.h"
+
