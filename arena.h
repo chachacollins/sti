@@ -88,6 +88,8 @@ void arena_free(Arena *arena)
         arena->start = arena->start->next;
         free_region(p);
     }
+    arena->start = NULL;
+    arena->end = NULL;
 }
 #endif //ARENA_IMPLEMENTATION
 #endif //ARENA_H
