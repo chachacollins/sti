@@ -23,6 +23,7 @@ typedef struct {
 } Arena;
 
 void* arena_alloc(Arena *arena, size_t size);
+void *arena_realloc(Arena *a, void *oldptr, size_t oldsz, size_t newsz);
 void  arena_free(Arena *arena);
 void  arena_reset(Arena *arena);
 
@@ -66,6 +67,14 @@ void* arena_alloc(Arena *arena, size_t size_r)
     void* data = &arena->end->data[arena->end->count];
     arena->end->count += size;
     return data;
+}
+
+void *arena_realloc(Arena *arena, void *oldptr, size_t oldsz, size_t newsz)
+{
+    if (newsz <= oldsz) return oldptr;
+    void* newptr = arena_alloc(arena, newsz);
+    memcpy(newptr, oldptr, oldsz);
+    return newptr;
 }
 
 void arena_reset(Arena *arena)

@@ -1,6 +1,6 @@
 #ifndef PRINT_H
 #define PRINT_H
-#ifdef PRINT_IMPLENTATION
+#ifdef PRINT_IMPLEMENTATION
 #define print(X) _Generic((X),                          \
     char: print_char,                                   \
     signed char: print_signed_char,                     \
