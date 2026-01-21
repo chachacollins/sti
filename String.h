@@ -31,7 +31,7 @@ void string_concat_cstr(Arena *arena, String *s, const char* cstr)
         s->data = new_pointer;
         s->capacity = new_capacity;
     }
-    strncpy(s->data + s->len, cstr, cstr_len);
+    memcpy(s->data + s->len, cstr, cstr_len);
     s->len += cstr_len;
 }
 
